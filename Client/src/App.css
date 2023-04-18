@@ -1,0 +1,120 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#error_msg{
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 5px;
+}
+
+.sign_up_container, .login_container{
+  display: grid;
+  grid-template-rows: max-content;
+}
+
+.sign_up_container{
+  grid-template-columns: 2.2fr 1fr;
+}
+
+.login_container{
+  grid-template-columns: 1fr 2.2fr;
+}
+
+.sign_up_container .form_left_side{
+  padding: 20px 50px 20px 20px;
+  min-height: 400px;
+}
+
+.login_container .form_right_side{
+  padding: 20px 20px 20px 50px;
+  background-color: #004e89;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: start;
+  min-height: 400px;
+}
+
+.login_container .form_right_side > div{
+  width: 90%;
+}
+
+.sign_up_container .form_left_side > div,
+.login_container .form_right_side > div{
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sign_up_container .form_left_side > div > input, 
+.login_container .form_right_side > div > input{
+  all: unset;
+  padding: 9px 8px;
+  background-color: #eef0f2;
+  font-size: 0.8rem;
+}
+
+.sign_up_container .form_left_side button,
+.login_container .form_right_side button{
+  all: unset;
+  padding: 10px 45px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sign_up_container .form_left_side button{
+  background-color: #004e89;
+  border: 1px solid #004e89;
+  color: #fff;
+}
+
+.login_container .form_right_side button{
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #004e89;
+}
+
+.sign_up_container .graphics_right_side,
+.login_container .graphics_left_side{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.sign_up_container .graphics_right_side{
+  background-color: #004e89;
+  color: #fff;
+}
+
+.login_container .graphics_left_side{
+  background-color: #fff;
+  color: #004e89;
+}
+
+.sign_up_container .graphics_right_side a,
+.login_container .graphics_left_side a {
+  text-decoration: none;
+  padding: 10px 45px;
+  color: #004e89;
+  border-radius: 100px;
+}
+.sign_up_container .graphics_right_side a {
+  background-color: #eef0f2;
+  border: 1px solid #eef0f2;
+  color: #004e89;
+}
+.login_container .graphics_left_side a {
+  background-color: #004e89;
+  border: 1px solid #004e89;
+  color: #fff;
+}
+
