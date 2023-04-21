@@ -18,7 +18,7 @@ app.use(express.json())
 // getting data from env file
 const dotenv = require("dotenv");
 dotenv.config({path: "./config.env"});
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 
 // mongoose connextion to db
 const mongoose = require("mongoose");
@@ -33,4 +33,4 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => console.log(`srver started at port ${PORT}`))
+app.listen(PORT, () => console.log(`srver started at port ${PORT}`))
