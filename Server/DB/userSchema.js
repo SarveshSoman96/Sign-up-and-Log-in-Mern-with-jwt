@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bycryptjs = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthdate: {
+    Occupation: {
         type: String,
         required: true
     },
@@ -30,6 +31,14 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 }
 );
+
+userSchema.pre("save", async function(next) {
+    // console.log("Hie from pre user schema")
+    if(this.isModified("userPassword")){
+        this.userPassword = await bycryptjs.hash(this.userPassword, 10)
+    }
+    next();
+});
 
 const UserModel = mongoose.model("UserData", userSchema);
 

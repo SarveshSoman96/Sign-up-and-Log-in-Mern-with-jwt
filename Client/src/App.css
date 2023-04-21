@@ -5,11 +5,36 @@
   min-height: 100vh;
 }
 
-#error_msg{
+#error_msg, #error_msg_login{
   font-size: 0.8rem;
-  color: red;
+  color: #cc0000;
   margin-top: 5px;
 }
+
+#error_msg_login{
+  color: #ff0000;
+  font-size: 0.9rem;
+}
+
+.success_container{
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #4cbf44;
+}
+
+#successMessage{
+  color: #1e5d1a;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 
 .sign_up_container, .login_container{
   display: grid;
@@ -45,8 +70,8 @@
   width: 90%;
 }
 
-.sign_up_container .form_left_side > div,
-.login_container .form_right_side > div{
+.sign_up_container .form_left_side > div.Input_group,
+.login_container .form_right_side > div.login_inputs{
   margin-bottom: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -58,6 +83,7 @@
   padding: 9px 8px;
   background-color: #eef0f2;
   font-size: 0.8rem;
+  color: #004e89;
 }
 
 .sign_up_container .form_left_side button,
@@ -116,5 +142,20 @@
   background-color: #004e89;
   border: 1px solid #004e89;
   color: #fff;
+}
+
+.welcome_container{
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 5px;
+}
+
+.welcome_container a#viewprofile{
+  text-decoration: none;
+  padding: 10px 45px;
+  color: #004e89;
+  border-radius: 100px;
 }
 

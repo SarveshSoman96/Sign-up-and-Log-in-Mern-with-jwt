@@ -2,6 +2,13 @@
 const express = require("express");
 const app = express();
 
+// cors package 
+const cors = require("cors");
+app.use(cors());
+
+// user Routes for log in & sign up
+const userRoutes = require("./routes/userRoutes")
+
 app.use(express.json())
 
 // getting data from env file
@@ -15,7 +22,7 @@ const mongoose = require("mongoose");
 require("./DB/connection")
 
 
-app.use(require("./routes/userRoutes"));
+app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
     res.json("Hello from server")
