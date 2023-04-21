@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const getUserProfileData = require("../middleware/GetAboutData")
 
 const bycryptjs = require("bcryptjs");
 
@@ -9,34 +10,6 @@ router.get("/", (req, res) => {
     res.send("hello from router js")
 })
 
-// Using promises
-
-// router.post("/signup", (req, res) => {
-//     const { firstName, lastName, birthdate, phone, userEmailAddress, userPassword } = req.body;
-   
-//     console.log(email)
-//     User.findOne({userEmailAddress: userEmailAddress})
-//     .then(userFound => {
-//         if(userFound){
-//             res.status(422).json({error: "User with the email already exists"})
-//         }
-//         else{ 
-//             const NewUser = new User(req.body)
-//             NewUser.save().then(data => {
-//                 console.log(data)
-//                 res.status(201).json({message: "User data saved successfully"})
-//             }).catch(err => {
-//                 console.log(err?.message)
-//                 res.status(500).json({error: "Failed to register"})
-//             })
-//         }
-//     })
-//     .catch(err => {
-//         console.log(err?.message)
-//     })
-// })
-
-// Using async await
 
 router.post("/signup", async (req, res) => {
     
@@ -76,12 +49,24 @@ router.post("/login", async (req, res) => {
         if(foundUser){
             const isMatch = bycryptjs.compare(userPassword, foundUser.userPassword)
 
+            let token = await foundUser.generateAuthToken();
+
             if(!isMatch){
                 res.status(409).json({message: "Invalid or missing credentials"});
             }
             else{
-                res.status(200).json({message: "Log in successfull"});
-                // console.log(foundUser)
+               
+                res
+                  .status(200)
+                  .json({
+                    message: "Log in successfull",
+                    token,
+                    userData: {
+                      UserId: foundUser._id,
+                      userName: foundUser.firstName,
+                    },
+                  });
+
             }
         }
         else{
@@ -93,5 +78,12 @@ router.post("/login", async (req, res) => {
     }
 
 });
+
+
+router.get("/profile", (req, res) => {
+    console.log("Hello my profile page")
+    console.log(req.body)
+    // res.send(req.verifiedUser);
+} )
 
 module.exports = router;

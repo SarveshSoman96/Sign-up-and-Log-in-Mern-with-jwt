@@ -5,6 +5,7 @@ import * as yup from "yup";
 import LogInInput from "../UI/LogInInput";
 import { useState } from "react";
 import Wrapper from "../UI/Wrapper";
+import { useCookies } from "react-cookie";
 
 const logInSchema = yup.object({
   userEmailAddress: yup
@@ -29,6 +30,8 @@ const LogInForm = () => {
   const navigate = useNavigate()
   const [successData, setSuccessData] = useState(null);
 
+  const [_, setCookies] = useCookies(["accessToken"]);
+
   const { register, handleSubmit, formState: {errors} , reset} = useForm({
     resolver: yupResolver(logInSchema)
   })
@@ -38,7 +41,7 @@ const LogInForm = () => {
     const userInfo = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
@@ -49,9 +52,13 @@ const LogInForm = () => {
       setSuccessData(userResponse.message)
       reset()
 
+      setCookies("accessToken", userResponse.token);
+
+      window.localStorage.setItem("userInfo", JSON.stringify(userResponse.userData));
+
       setTimeout(() => {
         navigate("/user/welcome")
-      }, 3000);
+      }, 2000);
     }
 
     if(userInfo.status === 409) setSuccessData(userResponse.message)
@@ -66,6 +73,7 @@ const LogInForm = () => {
         <Link to="/user/signup">Sign Up</Link>
       </div>
       <form
+        method="POST"
         className="form_right_side"
         onSubmit={handleSubmit(onLogInSubmitHandler)}
       >
@@ -79,14 +87,14 @@ const LogInForm = () => {
         <LogInInput
           id="password"
           label="Password"
-          type="text"
+          type="password"
           register={{ ...register("userPassword") }}
           errorMessage={errors.userPassword?.message}
         />
         <LogInInput
           id="confirm_password"
           label="Confirm password"
-          type="text"
+          type="password"
           register={{ ...register("confirm_password") }}
           errorMessage={errors.confirm_password?.message}
         />

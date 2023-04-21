@@ -159,3 +159,49 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 100px;
 }
 
+.view_profile_container{
+  padding: 10px;
+}
+.view_profile_container p,
+.view_profile_container h2{
+    text-align: center;
+    font-style: italic;
+    padding-bottom:10px;
+}
+
+.view_profile_container .details_container{
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  gap: 1rem;
+  border-top: 0.5px solid #004e89;
+  border-bottom: 0.5px solid #004e89;
+}
+
+
+.view_profile_container .details_container .profile_details_left .profile_img img{
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.view_profile_container .details_container .profile_details_right > div{
+  display: grid;
+  grid-template-columns: 0.6fr 0.9fr;
+  margin-block: 1rem;
+}
+.view_profile_container .log_out{
+  padding-top: 1rem;
+  text-align: center;
+}
+.view_profile_container #logout_btn{
+  all: unset;
+  padding: 10px 45px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #004e89;
+  border: 1px solid #004e89;
+  color: #fff;
+}

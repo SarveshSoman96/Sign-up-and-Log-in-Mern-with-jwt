@@ -49,6 +49,7 @@ const SignUpForm = () => {
   });
 
   const signUpFormSubmit = async (data) => {
+
     const userData = await fetch("http://localhost:5000/user/signup", {
       method: "POST",
       headers: {
@@ -70,6 +71,7 @@ const SignUpForm = () => {
     <Wrapper>
       <div className="sign_up_container">
         <form
+        method="POST"
           className="form_left_side"
           onSubmit={handleSubmit(signUpFormSubmit)}
         >

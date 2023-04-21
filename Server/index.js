@@ -1,10 +1,14 @@
 // getting express and starting server
 const express = require("express");
 const app = express();
+const cookieParser = require('cookie-parser');
 
 // cors package 
+app.use(cookieParser());
+
 const cors = require("cors");
 app.use(cors());
+
 
 // user Routes for log in & sign up
 const userRoutes = require("./routes/userRoutes")

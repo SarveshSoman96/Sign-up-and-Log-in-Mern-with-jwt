@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import LogInForm from './Pages/LogInForm';
 import SignUpForm from './Pages/SignUpForm';
 import ViewProfile from './Pages/ViewProfile';
-// import Home from './Pages/Home';
+import Home from './Pages/Home';
 import Wrapper from './UI/Wrapper';
 import WelcomeUser from './Pages/WelcomeUser';
 
@@ -24,11 +24,10 @@ function App() {
     <div className="container">
       {/* <Wrapper> */}
         <Routes>
-          {/* <Route path='/' element={<Home />} /> */}
+          <Route path='/' element={<Home />} />
           <Route path='/user/login' element={<LogInForm />} />
           <Route path='/user/signup' element={<SignUpForm />}/>
           <Route path='/user/profile' element={<ViewProfile />}/>
-          <Route path='/user/welcome' element={<WelcomeUser />}/>
           <Route path='/user/welcome' element={<WelcomeUser />}/>
         </Routes>
       {/* </Wrapper> */}
