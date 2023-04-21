@@ -3,9 +3,9 @@ const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser');
 
-// cors package 
 app.use(cookieParser());
 
+// cors package 
 const cors = require("cors");
 app.use(cors());
 

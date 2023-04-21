@@ -23,14 +23,14 @@ const ViewProfile = () => {
           method: "GET",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
-          },
-          credentials: "include"
+            "Content-Type": "application/json",
+            accessToken: cookies.accessToken
+          }
       })
 
-      // const aboutData = await dataFromServer.json()
+      const aboutData = await dataFromServer.json();
 
-      console.log(dataFromServer)
+      console.log(aboutData)
 
     } catch (error) {
         console.log(error)
