@@ -81,9 +81,8 @@ router.post("/login", async (req, res) => {
 
 
 router.get("/profile", getUserProfileData,  (req, res) => {
-    console.log("Hello my profile page")
-    console.log(req.verifiedUser);
-    res.send(req.verifiedUser);
+    // console.log(req.verifiedUser);
+    res.send(req.verifiedUserInfo);
 } )
 
 module.exports = router;

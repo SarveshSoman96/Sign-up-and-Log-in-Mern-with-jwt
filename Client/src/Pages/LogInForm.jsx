@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import LogInInput from "../UI/LogInInput";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import Wrapper from "../UI/Wrapper";
 import { useCookies } from "react-cookie";
 
@@ -30,14 +30,21 @@ const LogInForm = () => {
   const navigate = useNavigate()
   const [successData, setSuccessData] = useState(null);
 
-  const [_, setCookies] = useCookies(["accessToken"]);
+  const [_, setCookies, removeCookie] = useCookies(["accessToken"]);
 
   const { register, handleSubmit, formState: {errors} , reset} = useForm({
     resolver: yupResolver(logInSchema)
   })
 
+  useEffect(() => {
+    removeCookie("accessToken", "");
+    window.localStorage.removeItem("userInfo");
+  
+  }, [])
+  
+
   const onLogInSubmitHandler = async (data) => {
-    
+        
     const userInfo = await fetch("http://localhost:5000/user/login", {
       method: "POST",
       headers: {
@@ -52,7 +59,9 @@ const LogInForm = () => {
       setSuccessData(userResponse.message)
       reset()
 
-      setCookies("accessToken", userResponse.token);
+      setCookies("accessToken", userResponse.token, {
+        maxAge: 3600
+      });
 
       window.localStorage.setItem("userInfo", JSON.stringify(userResponse.userData));
 
@@ -76,7 +85,8 @@ const LogInForm = () => {
         method="POST"
         className="form_right_side"
         onSubmit={handleSubmit(onLogInSubmitHandler)}
-      >
+        >
+        <h2>Log in Form</h2>
         <LogInInput
           id="confirm_Email"
           label="Email id"

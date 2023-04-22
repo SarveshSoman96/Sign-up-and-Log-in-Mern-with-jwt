@@ -75,6 +75,7 @@ const SignUpForm = () => {
           className="form_left_side"
           onSubmit={handleSubmit(signUpFormSubmit)}
         >
+           <h2>Registration Form</h2>
           <InputBlock
             type="text"
             id="FName"

@@ -10,13 +10,6 @@ import WelcomeUser from './Pages/WelcomeUser';
 
 function App() {
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-
-    navigate("/user/login")
- 
-  }, [])
   
 
   return (

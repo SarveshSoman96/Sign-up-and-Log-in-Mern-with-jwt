@@ -1,9 +1,9 @@
 // getting express and starting server
 const express = require("express");
 const app = express();
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // cors package 
 const cors = require("cors");

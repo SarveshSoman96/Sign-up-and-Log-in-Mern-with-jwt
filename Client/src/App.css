@@ -16,6 +16,25 @@
   font-size: 0.9rem;
 }
 
+.home_container{
+  text-align: center;
+}
+.home_container > *{
+  margin-block: 10px;
+}
+
+.home_container h2{
+  font-size: 45px;
+  font-style: italic;
+}
+
+.home_container a{
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #004e89;
+}
+
 .success_container{
   margin-top: 5px;
   padding: 8px;
@@ -68,6 +87,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 .login_container .form_right_side > div{
   width: 90%;
+}
+
+.login_container .form_right_side h2,
+.sign_up_container .form_left_side h2{
+  margin-bottom: 20px;
 }
 
 .sign_up_container .form_left_side > div.Input_group,
