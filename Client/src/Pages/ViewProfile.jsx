@@ -31,12 +31,22 @@ const ViewProfile = () => {
       setUserInfo(aboutData);
 
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
   };
 
   useEffect(() => {
-    getUserProfileDataHandler();
+
+    if(cookies.accessToken){
+
+      getUserProfileDataHandler();
+    }
+    else{
+      alert("You are not logged in yet! Log in or Sign up first")
+      navigate("/user/login");
+    }
+
+
   }, []);
 
   return (

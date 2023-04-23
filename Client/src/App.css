@@ -16,7 +16,7 @@
   font-size: 0.9rem;
 }
 
-.home_container{
+.home_container, .error_container{
   text-align: center;
 }
 .home_container > *{
@@ -27,8 +27,14 @@
   font-size: 45px;
   font-style: italic;
 }
+.error_container h1{
+  font-size: 40px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
 
-.home_container a{
+.home_container a,
+.error_container a{
   font-weight: 700;
   font-size: 1.2rem;
   text-decoration: none;
@@ -228,4 +234,126 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #004e89;
   border: 1px solid #004e89;
   color: #fff;
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px){
+  .container{
+    padding-inline: 40px;
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 768px) {
+  .container{
+    padding-inline: 30px;
+  }
+  .sign_up_container{
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .sign_up_container .form_left_side{
+    padding: 20px;
+    min-height: 400px;
+  }
+  .sign_up_container .graphics_right_side,
+  .login_container .graphics_left_side{
+    padding: 20px;
+    text-align: center;
+  }
+  .login_container{
+    grid-template-columns: 1fr 2fr;
+  }
+  .sign_up_container .graphics_right_side a,  
+  .login_container .graphics_left_side a{
+    padding: 10px 25px;
+    font-size: 14px;
+    border-radius: 80px;
+  }
+  .sign_up_container .form_left_side button,
+  .login_container .form_right_side button{
+    padding: 10px 25px;
+    border-radius: 80px;
+    font-weight: 500;
+  }
+  .login_container .form_right_side{
+    padding: 20px;
+  }
+  .view_profile_container #logout_btn {
+    padding: 10px 25px;
+    border-radius: 80px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 579px) {
+  .container{
+    padding-inline: 5%;
+  }
+  .sign_up_container , .login_container{
+    grid-template-columns: 1fr;
+  }
+  .sign_up_container .form_left_side{
+    padding: 20px;
+    order: 2;
+  }
+
+  .sign_up_container .graphics_right_side {
+    padding: 20px;
+    order: 1;
+  }
+  .sign_up_container .graphics_right_side h2,
+  .login_container .graphics_left_side h2
+  {
+    font-size: 20px;
+  }
+  .sign_up_container .graphics_right_side a,  
+  .login_container .graphics_left_side a{
+    padding: 7px 25px;
+    font-size: 13px;
+    border-radius: 60px;
+  }
+  .sign_up_container .form_left_side h2,
+  .login_container .form_right_side h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  .sign_up_container .form_left_side button,
+  .login_container .form_right_side button{
+    padding: 8px 18px;
+    border-radius: 80px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .login_container .graphics_left_side{
+    padding: 20px;
+    order: 1;
+  }
+  .login_container .form_right_side{
+    padding: 20px;
+    order: 2;
+  }
+  .login_container .form_right_side > div.login_inputs {
+    margin-bottom: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+  }
+  .view_profile_container .details_container .profile_details_left .profile_img img {
+    width: 100px;
+    border-radius: 50%;
+  }
+  .view_profile_container .details_container {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  .view_profile_container .details_container .profile_details_right{
+    padding-left: 5%;
+  }
+  .view_profile_container #logout_btn {
+    padding: 8px 18px;
+    border-radius: 80px;
+    font-weight: 500;
+    font-size: 15px;
+  }
 }

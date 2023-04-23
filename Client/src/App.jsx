@@ -5,7 +5,7 @@ import LogInForm from './Pages/LogInForm';
 import SignUpForm from './Pages/SignUpForm';
 import ViewProfile from './Pages/ViewProfile';
 import Home from './Pages/Home';
-import Wrapper from './UI/Wrapper';
+import ErrorPage from './Pages/ErrorPage';
 import WelcomeUser from './Pages/WelcomeUser';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           <Route path='/user/signup' element={<SignUpForm />}/>
           <Route path='/user/profile' element={<ViewProfile />}/>
           <Route path='/user/welcome' element={<WelcomeUser />}/>
+          <Route path='*' element={<ErrorPage />}/>
         </Routes>
       {/* </Wrapper> */}
     </div>

@@ -2,49 +2,46 @@ const jwt = require("jsonwebtoken");
 const User = require("../DB/userSchema");
 
 const getUserProfileData = async (req, res, next) => {
-    try {
-        
-        const tokenHeader = req.headers['authorization'];
+  try {
+    const tokenHeader = req.headers["authorization"];
 
-        const token = tokenHeader.split(" ")[1]
+    const token = tokenHeader.split(" ")[1];
 
-        if(token){
-            const verifyToken = jwt.verify(token, process.env.SECRET_KEY, (err) => {
+    if(token){
 
-                res.status(401).send({messsage: "Token not provided or Expired"})
-                
-            });
-            
-            const verifiedUser = await User.findOne({_id: verifyToken._id, "tokens.token": token})
+        const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
-        if(!verifiedUser) {
-            res.send({messsage: "Unable to fetch info. User not registered"})
-        }
-        else{
+        const verifiedUser = await User.findOne({
+        _id: verifyToken._id,
+        "tokens.token": token,
+        });
 
-            const {firstName, lastName, Occupation, phone, userEmailAddress} = verifiedUser;
+            const { firstName, lastName, Occupation, phone, userEmailAddress } =
+            verifiedUser;
 
             req.token = token;
-            req.verifiedUserInfo = {firstName, lastName, Occupation, phone, userEmailAddress};
+            req.verifiedUserInfo = {
+            firstName,
+            lastName,
+            Occupation,
+            phone,
+            userEmailAddress,
+            };
             req.userId = verifiedUser._id;
-            
-            // console.log(verifiedUser)
-        }
 
-        next();
+            // console.log(verifiedUser);
+            next();
         }
-
         else{
-            res.status(401).send({messsage: "Unauthorized. No token provided"})
+            res.status(401).send({ messsage: "Unauthorized. No token provided" });
         }
 
-        
+    
 
-
-    } catch (error) {
-        res.status(401).send({messsage: "Unauthorized. No token provided"})
-        console.log(error)
-    }
+  } catch (error) {
+    res.status(401).send({ messsage: "Unauthorized. No token provided" });
+    console.log(error);
+  }
 };
 
-module.exports =  getUserProfileData;
+module.exports = getUserProfileData;

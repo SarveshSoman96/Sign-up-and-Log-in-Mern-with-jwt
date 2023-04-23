@@ -18,6 +18,7 @@ const WelcomeUser = () => {
 
     } 
     else{
+      alert("You are not logged in yet! Log in or Sign up first")
       navigate("/user/login")
     }
 
