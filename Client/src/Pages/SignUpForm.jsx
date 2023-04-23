@@ -50,7 +50,7 @@ const SignUpForm = () => {
 
   const signUpFormSubmit = async (data) => {
 
-    const userData = await fetch("http://localhost:5000/user/signup", {
+    const userData = await fetch("https://mernauthbackend-b9f7.onrender.com/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

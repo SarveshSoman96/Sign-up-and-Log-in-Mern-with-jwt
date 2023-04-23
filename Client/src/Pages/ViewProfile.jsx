@@ -17,7 +17,7 @@ const ViewProfile = () => {
 
   const getUserProfileDataHandler = async () => {
     try {
-      const dataFromServer = await fetch("http://localhost:5000/user/profile", {
+      const dataFromServer = await fetch("https://mernauthbackend-b9f7.onrender.com/user/profile", {
         method: "GET",
         headers: {
           Accept: "application/json",

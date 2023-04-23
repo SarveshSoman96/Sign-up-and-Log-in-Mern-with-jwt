@@ -45,7 +45,7 @@ const LogInForm = () => {
 
   const onLogInSubmitHandler = async (data) => {
         
-    const userInfo = await fetch("http://localhost:5000/user/login", {
+    const userInfo = await fetch("https://mernauthbackend-b9f7.onrender.com/user/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
